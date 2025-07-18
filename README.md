@@ -1,6 +1,6 @@
 # Trading Tips Post Generator 🚀
 
-![Project Preview](https://via.placeholder.com/800x400?text=Trading+Post+Generator+Preview)
+![Project Preview]([https://via.placeholder.com/800x400?text=Trading+Post+Generator+Preview](https://trading-post-generator.netlify.app/))
 
 A professional web application that automates the creation of trading tip posts for Telegram groups. This tool allows traders to quickly generate visually appealing posts with custom content, styling, and branding.
 
