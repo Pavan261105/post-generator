@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro Trading Post Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="panel">
+            <div class="logo-container">
+                <img src="logo.jpg" alt="Trading Post Pro Logo" class="logo">
+            </div>
+            <h1>Trading Tips Post Generator</h1>
+            
+            <div class="tabs">
+                <div class="tab active" data-tab="content">Content</div>
+                <div class="tab" data-tab="design">Design</div>
+                <div class="tab" data-tab="settings">Settings</div>
+            </div>
+            
+            <div class="tab-content active" id="content-tab">
+                <div class="form-group">
+                    <label for="analyst-name">Analyst Name <span class="tooltip">?<span class="tooltiptext">Your name or brand that will appear at the top</span></span></label>
+                    <input type="text" id="analyst-name" class="input-control" placeholder="e.g. John's Trading Insights">
+                </div>
+                
+                <div class="form-group">
+                    <label for="topic">Topic/Title <span class="tooltip">?<span class="tooltiptext">Main headline for your trading tip</span></span></label>
+                    <input type="text" id="topic" class="input-control" placeholder="e.g. Market Outlook for July">
+                </div>
+                
+                <div class="form-group">
+                    <label>Content Lines <span class="tooltip">?<span class="tooltiptext">Add multiple bullet points with your analysis</span></span></label>
+                    <div id="lines-container">
+                        <div class="line-input">
+                            <input type="text" class="input-control content-line" placeholder="Enter your first point">
+                            <button type="button" class="btn btn-danger btn-sm remove-line"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                    <button type="button" id="add-line" class="btn btn-outline"><i class="fas fa-plus"></i> Add Another Point</button>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="design-tab">
+                <div class="settings-group">
+                    <label>Post Size</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="post-size" value="1080x1080" checked> Square
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="post-size" value="1080x1350"> Portrait
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="post-size" value="1080x608"> Landscape
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="settings-group">
+                    <label>Background Style</label>
+                    <select id="bg-style" class="input-control">
+                        <option value="solid">Solid Color</option>
+                        <option value="gradient">Gradient</option>
+                        <option value="pattern">Pattern</option>
+                    </select>
+                    
+                    <div id="solid-color-options" class="color-options-group">
+                        <div class="form-group">
+                            <label>Primary Color</label>
+                            <div class="color-picker">
+                                <input type="color" id="bg-color" value="#1a237e">
+                                <div class="color-options">
+                                    <div class="color-option" style="background-color: #1a237e;" data-color="#1a237e"></div>
+                                    <div class="color-option" style="background-color: #0d47a1;" data-color="#0d47a1"></div>
+                                    <div class="color-option" style="background-color: #1565c0;" data-color="#1565c0"></div>
+                                    <div class="color-option" style="background-color: #4527a0;" data-color="#4527a0"></div>
+                                    <div class="color-option" style="background-color: #283593;" data-color="#283593"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="gradient-color-options" class="color-options-group hidden">
+                        <div class="form-group">
+                            <label>Gradient Colors</label>
+                            <div class="color-picker">
+                                <input type="color" id="gradient-color1" value="#1a237e">
+                                <input type="color" id="gradient-color2" value="#4a148c">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Gradient Direction</label>
+                            <select id="gradient-direction" class="input-control">
+                                <option value="to right">Horizontal</option>
+                                <option value="to bottom">Vertical</option>
+                                <option value="to bottom right">Diagonal</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div id="pattern-options" class="color-options-group hidden">
+                        <div class="form-group">
+                            <label>Pattern Style</label>
+                            <select id="pattern-style" class="input-control">
+                                <option value="dots">Dots</option>
+                                <option value="lines">Lines</option>
+                                <option value="grid">Grid</option>
+                                <option value="noise">Noise</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Pattern Color</label>
+                            <input type="color" id="pattern-color" value="#ffffff">
+                        </div>
+                        <div class="form-group">
+                            <label>Pattern Opacity</label>
+                            <input type="range" id="pattern-opacity" min="0" max="1" step="0.1" value="0.2">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="settings-group">
+                    <label>Text Style</label>
+                    <div class="form-group">
+                        <label for="font-family">Font Family</label>
+                        <select id="font-family" class="input-control">
+                            <option value="Montserrat">Montserrat</option>
+                            <option value="Roboto">Roboto</option>
+                            <option value="Open Sans">Open Sans</option>
+                            <option value="Poppins">Poppins</option>
+                            <option value="Raleway">Raleway</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="text-color">Text Color</label>
+                        <input type="color" id="text-color" value="#ffffff">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="settings-tab">
+                <div class="settings-group">
+                    <label>Watermark Options</label>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="enable-watermark">
+                        <label for="enable-watermark">Enable Watermark</label>
+                    </div>
+                    <div id="watermark-options" class="hidden">
+                        <div class="form-group">
+                            <label for="watermark-text">Watermark Text</label>
+                            <input type="text" id="watermark-text" class="input-control" placeholder="e.g. @YourTelegramHandle">
+                        </div>
+                        <div class="form-group">
+                            <label for="watermark-opacity">Watermark Opacity</label>
+                            <input type="range" id="watermark-opacity" min="0" max="1" step="0.1" value="0.3">
+                        </div>
+                        <div class="watermark-preview">
+                            <small>Preview: <span id="watermark-preview-text">@YourTelegramHandle</span></small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="settings-group">
+                    <label>Post Metadata</label>
+                    <div class="form-group">
+                        <label for="post-date">Date</label>
+                        <input type="date" id="post-date" class="input-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="post-tags">Tags (comma separated)</label>
+                        <input type="text" id="post-tags" class="input-control" placeholder="e.g. Nifty, BankNifty, Stocks">
+                    </div>
+                </div>
+            </div>
+            
+            <button id="generate-btn" class="btn btn-primary"><i class="fas fa-magic"></i> Generate Post</button>
+        </div>
+        
+        <div class="panel preview-container">
+            <h2>Post Preview</h2>
+            <canvas id="post-preview"></canvas>
+            <button id="download-btn" class="btn btn-success hidden"><i class="fas fa-download"></i> Download Post</button>
+            
+            <div class="settings-group" style="margin-top: 30px;">
+                <label>Export Options</label>
+                <div class="form-group">
+                    <label for="export-format">File Format</label>
+                    <select id="export-format" class="input-control">
+                        <option value="png">PNG (High Quality)</option>
+                        <option value="jpeg">JPEG (Smaller File)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="export-quality">Quality (JPEG only)</label>
+                    <input type="range" id="export-quality" min="0.1" max="1" step="0.1" value="0.9" disabled>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
